@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe_ConsoleApp", "Cafe_ConsoleApp\Cafe_ConsoleApp.csproj", "{E05CA906-4018-4011-9D54-E89D4C42909B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E05CA906-4018-4011-9D54-E89D4C42909B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E05CA906-4018-4011-9D54-E89D4C42909B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E05CA906-4018-4011-9D54-E89D4C42909B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E05CA906-4018-4011-9D54-E89D4C42909B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B53D2499-5A6F-44DE-84CD-5E26A5AC3221}
+	EndGlobalSection
+EndGlobal
