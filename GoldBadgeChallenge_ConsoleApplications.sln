@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe_ConsoleApp", "Cafe_ConsoleApp\Cafe_ConsoleApp.csproj", "{E05CA906-4018-4011-9D54-E89D4C42909B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe_Console", "Cafe_ConsoleApp\Cafe_Console.csproj", "{E05CA906-4018-4011-9D54-E89D4C42909B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe_Repository", "Cafe_Repository\Cafe_Repository.csproj", "{9A45F37F-4792-42EC-B108-DE60832D1C51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cafe_MethodsTest", "MenuMethodsTest\Cafe_MethodsTest.csproj", "{DD68BCE1-7628-4086-861F-EA08366365E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{E05CA906-4018-4011-9D54-E89D4C42909B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E05CA906-4018-4011-9D54-E89D4C42909B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E05CA906-4018-4011-9D54-E89D4C42909B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A45F37F-4792-42EC-B108-DE60832D1C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A45F37F-4792-42EC-B108-DE60832D1C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A45F37F-4792-42EC-B108-DE60832D1C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A45F37F-4792-42EC-B108-DE60832D1C51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD68BCE1-7628-4086-861F-EA08366365E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD68BCE1-7628-4086-861F-EA08366365E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD68BCE1-7628-4086-861F-EA08366365E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD68BCE1-7628-4086-861F-EA08366365E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
