@@ -74,7 +74,7 @@ namespace Cafe_ConsoleApp
                 int count = 1;
                 foreach (Menu item in menu)
                 {
-                    Console.WriteLine($"#{count}. {item.Name}");
+                    Console.WriteLine($"#{count}. {item.Name} ${item.Price}");
                     ++count;
                 }
                 bool ordering = true;
@@ -288,7 +288,7 @@ namespace Cafe_ConsoleApp
             int count = 1;
             foreach (Menu item in menu)
             {
-                Console.WriteLine($"#{count}. {item.Name}");
+                Console.WriteLine($"#{count}. {item.Name} ${item.Price}");
                 ++count;
             }
             Console.WriteLine("             Press Enter to go back");

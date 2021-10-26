@@ -66,7 +66,8 @@ namespace Cafe_Repository
                 oldOrder.Price = newOrder.Price;
                 oldOrder.ListOfIngredients = newOrder.ListOfIngredients;
                 oldOrder.Discription = newOrder.Discription;
-                Console.WriteLine("order updated");
+                Console.WriteLine("Order updated");
+                return true;
             }
             return false;
         }
