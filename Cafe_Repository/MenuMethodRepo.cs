@@ -35,6 +35,10 @@ namespace Cafe_Repository
         {
             int start = _menuDirectory.Count;
             int orderCheck = _orderDirectory.Count();
+            if (orderCheck == 0)
+            {
+                return false;
+            }
             foreach (Menu item in _menuDirectory)
             {
                 if (item.OrderNum == orderNum)
@@ -52,14 +56,64 @@ namespace Cafe_Repository
             bool done = _menuDirectory.Count < start ? true : false;
             return false;
         }
-        public bool UpdateMenuItem()
+        public bool UpdateMenuItem(int orderNum, Menu newOrder)
         {
-
+            Menu oldOrder = GetOrderByNumber(orderNum);
+            if (oldOrder != null)
+            {
+                oldOrder.Name = newOrder.Name;
+                oldOrder.OrderNum = newOrder.OrderNum;
+                oldOrder.Price = newOrder.Price;
+                oldOrder.ListOfIngredients = newOrder.ListOfIngredients;
+                oldOrder.Discription = newOrder.Discription;
+                Console.WriteLine("order updated");
+            }
             return false;
         }
         public List<Menu> GetAllMenus()
         {
             return _menuDirectory;
+        }
+        public List<Menu> GetAllOrders()
+        {
+            return _orderDirectory;
+        }
+        public Menu GetOrderByNumber(int orderNum)
+        {
+            foreach(Menu item in _orderDirectory)
+            {
+                if (item.OrderNum == orderNum)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+        public Menu GetMenuItemByIndex(int indexNum)
+        {
+            if (indexNum < 6)
+            {
+                return _menuDirectory[indexNum];
+            }
+            return null;
+        }
+        public void DisplayIngredience(int itemNum)
+        {
+            foreach (Menu item in _menuDirectory)
+            {
+                if (item.OrderNum == itemNum)
+                {
+                    int count = 1;
+                    foreach (Ingredients ingredient in item.ListOfIngredients)
+                    {
+                        int eVal = ((int)ingredient);
+                        var eName = (Ingredients)eVal;
+                        Console.WriteLine($"{count}. {eName}");
+                        ++count;
+                    }
+                    Console.WriteLine(item.Discription);
+                }
+            }
         }
     }
 }
