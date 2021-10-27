@@ -50,5 +50,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Greeting_Repository\Greeting_Repository.csproj">
+      <Project>{17F9CC8D-2CFB-4B77-AD20-67769DBDCC27}</Project>
+      <Name>Greeting_Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

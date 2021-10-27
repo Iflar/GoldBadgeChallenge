@@ -107,7 +107,7 @@ namespace Cafe_Repository
                     int count = 1;
                     foreach (Ingredients ingredient in item.ListOfIngredients)
                     {
-                        int eVal = ((int)ingredient);
+                        int eVal = (int)ingredient;
                         var eName = (Ingredients)eVal;
                         Console.WriteLine($"{count}. {eName}");
                         ++count;

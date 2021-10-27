@@ -10,23 +10,44 @@ namespace Greeting_Repository
     {
         protected readonly List<Customer> _customerDirectory = new List<Customer>();
 
-        public bool AddCustomertoDir()
+        public bool AddCustomerToDir(Customer customer)
         {
-
-            return false;
+            int start = _customerDirectory.Count;
+            _customerDirectory.Add(customer);
+            return _customerDirectory.Count > start ? true : false;
         }
-        public bool RemoveCustomerFromDir()
+        public bool RemoveCustomerFromDir(Customer customer)
         {
-
-            return false;
+            int start = _customerDirectory.Count;
+            _customerDirectory.Remove(customer);
+            return _customerDirectory.Count < start ? true : false;
         }
-        public bool UpdateCustomerInfo()
+        public bool UpdateCustomerInfo(int customerID, Customer updatedCustomer)
         {
+            Customer oldCustomer = GetCustomerByID(customerID);
+            if (oldCustomer != null)
+            {
+                oldCustomer.FirstName = updatedCustomer.FirstName;
+                oldCustomer.LastName = updatedCustomer.LastName;
+                oldCustomer.DateActive = updatedCustomer.DateActive;
+                return true;
+            }
             return false;
         }
         public List<Customer> GetAllCustomers()
         {
             return _customerDirectory;
+        }
+        public Customer GetCustomerByID(int customerID)
+        {
+            foreach(Customer customer in _customerDirectory)
+            {
+                if (customer.CustomerID == customerID)
+                {
+                    return customer;
+                }
+            }
+            return null;
         }
 
     }
