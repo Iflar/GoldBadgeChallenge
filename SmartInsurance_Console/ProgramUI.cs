@@ -8,5 +8,18 @@ namespace SmartInsurance_Console
 {
     class ProgramUI
     {
+        public void Run()
+        {
+            SeedDriverList();
+            RunMenu();
+        }
+        public void RunMenu()
+        {
+        
+        }
+        public void SeedDriverList()
+        {
+
+        }
     }
 }
