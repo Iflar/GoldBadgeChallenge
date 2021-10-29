@@ -46,8 +46,11 @@ namespace Greeting_Repository
                 DateTime realDate = (DateTime)dateActive;
 
                 TimeSpan timeSpan = DateTime.Now - realDate;
+
                 double timeAsActiveCostomer = timeSpan.TotalDays / 365.25;
+
                 Convert.ToInt32(Math.Floor(timeAsActiveCostomer));
+
                 if (timeAsActiveCostomer > 2)
                 {
                     return MemberStatus.Past;

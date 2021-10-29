@@ -49,6 +49,10 @@ namespace Greeting_Repository
             }
             return null;
         }
-
+        public List<Customer> GetSortedList(List<Customer> customerList)
+        {
+            List<Customer> sortedList = customerList.OrderBy(cn => cn.FirstName).ThenBy(cn => cn.LastName).ToList();
+            return sortedList;
+        }
     }
 }

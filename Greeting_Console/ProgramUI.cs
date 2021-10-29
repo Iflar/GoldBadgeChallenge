@@ -280,13 +280,17 @@ namespace Greeting_Console
                     "Press any key to continue");
                 Console.ReadKey();
             }
-            
+
         }
         public void DisplayAll()
         {
             Console.Clear();
             Console.WriteLine("FirstName\tLastName\tType\t\tEmail");
-            foreach (Customer customer in _repo.GetAllCustomers())
+            List<Customer> customerList = _repo.GetAllCustomers();
+
+            List<Customer> sortedList = _repo.GetSortedList(customerList);
+
+            foreach (Customer customer in sortedList)
             {
                 MemberStatus type = customer.MemberStatus;
                 int eVal = (int)type;
@@ -305,6 +309,7 @@ namespace Greeting_Console
                 {
                     email = "We currently have the lowest rates on Helicopter Insurance!";
                 }
+
 
                 Console.WriteLine($"{customer.FirstName}\t\t{customer.LastName}\t\t{eName}\t\t{email}");
 

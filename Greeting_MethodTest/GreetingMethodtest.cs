@@ -70,6 +70,7 @@ namespace Greeting_MethodTest
                 result = true;
             }
             Assert.IsTrue(result);
+            Assert.AreEqual(0, listTest.Count);
         }
     }
 }
