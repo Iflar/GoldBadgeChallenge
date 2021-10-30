@@ -11,8 +11,7 @@ namespace SmartInsurance_MethodReposotory
         FollowTooClose,
         Speed,
         SwerveOutOfLane,
-        RollThroughStopSign,
-        None
+        RollThroughStopSign
     }
 
     public enum GoodHabbit
@@ -20,15 +19,14 @@ namespace SmartInsurance_MethodReposotory
         SafeDistance,
         FollowSpeedLimit,
         StayInLane,
-        FullStopAtSign,
-        None
+        FullStopAtSign
     }
     public class Driver
     {
         public int DriverID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public double Premium { get; set; }
+        public double Premium {get; set;}
         public List<GoodHabbit> GoodHabbits { get; set; }
         public List<BadHabbit> BadHabbits { get; set; }
 

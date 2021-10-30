@@ -31,7 +31,6 @@ namespace SmartInsureanceMethodReposotory
                 oldDriver.LastName = updatedDriver.LastName;
                 oldDriver.GoodHabbits = updatedDriver.GoodHabbits;
                 oldDriver.BadHabbits = updatedDriver.BadHabbits;
-                oldDriver.Premium = updatedDriver.Premium;
                 return true;
             }
             return false;
@@ -50,6 +49,66 @@ namespace SmartInsureanceMethodReposotory
                 }
             }
             return null;
+        }
+        public Driver GenerateHabbits(Driver driver)
+        {
+            List<GoodHabbit> goodHabbits = driver.GoodHabbits;
+            List<BadHabbit> badHabbits = driver.BadHabbits;
+
+            Random random = new Random();
+            int numGoodHabbits = random.Next(0, 4);
+            int numBadHabbits = random.Next(0, 4);
+
+            while(numGoodHabbits >= 0)
+            {
+                int cycle = 0;
+                var habbit = Enum.GetValues(typeof(GoodHabbit)).GetValue(cycle);
+                GoodHabbit selectedHabbit = (GoodHabbit)habbit;
+
+                foreach (GoodHabbit goodHabbit in goodHabbits)
+                {
+                    if (selectedHabbit != goodHabbit)
+                    {
+                        goodHabbits.Add(selectedHabbit);
+                    }
+                }
+                ++cycle;
+                --numGoodHabbits;
+            }
+            while (numBadHabbits >= 0)
+            {
+                int cycle = 0;
+                var habbit = Enum.GetValues(typeof(BadHabbit)).GetValue(cycle);
+                BadHabbit selectedHabbit = (BadHabbit)habbit;
+
+                foreach (BadHabbit badHabbit in badHabbits)
+                {
+                    if (selectedHabbit != badHabbit)
+                    {
+                        badHabbits.Add(selectedHabbit);
+                    }
+                }
+                ++cycle;
+                --numBadHabbits;
+            }
+
+            return driver;
+        }
+        public double CalculatePremiumByHabbit(Driver driver)
+        {
+            List<GoodHabbit> goodHabbits = driver.GoodHabbits;
+            List<BadHabbit> badHabbits = driver.BadHabbits;
+            double premium = driver.Premium;
+
+            foreach (GoodHabbit goodHabbit in goodHabbits)
+            {
+                premium = premium - (premium * 0.2);
+            }
+            foreach (BadHabbit badHabbit in badHabbits)
+            {
+                premium = premium + (premium * 0.3);
+            }
+            return premium;
         }
     }
 }
