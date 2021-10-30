@@ -41,7 +41,7 @@ namespace SmartInsurance_Console
                         break;
                     case "2":
                         Console.Clear();
-                        //DeleteDriver
+                        DeleteDriver();
                         break;
                     case "3":
                         Console.Clear();
@@ -72,11 +72,11 @@ namespace SmartInsurance_Console
             Console.ReadKey();
             Console.Clear();
 
-            Console.Clear();
-            Console.WriteLine($"What is {driver.FirstName} {driver.LastName}'s starting premium?");
             bool runPremium = true;
             while (runPremium)
             {
+                Console.Clear();
+                Console.WriteLine($"What is {driver.FirstName} {driver.LastName}'s starting premium?");
                 double input;
                 bool parse = double.TryParse(Console.ReadLine(), out input);
                 if (parse)
@@ -135,8 +135,162 @@ namespace SmartInsurance_Console
                         metaID = false;
                         runID = false;
                     }
-                    Console.WriteLine("After 6 ");
+                    Console.Clear();
+                    Driver experiencedDriver = _repo.GenerateHabbits(driver);
+                    Console.WriteLine("After 6 months...");
+                    Console.ReadKey();
+                    Console.Clear();
+
+                    double initialPremium = driver.Premium;
+                    int badHabbitCount = experiencedDriver.BadHabbits.Count();
+                    int goodHabbitCount = experiencedDriver.GoodHabbits.Count();
+                    experiencedDriver.Premium =  _repo.CalculatePremiumByHabbit(experiencedDriver);
+                    double updatedPremium = experiencedDriver.Premium;
+
+                    Console.WriteLine($"Over the months it seems {experiencedDriver.FirstName} {experiencedDriver.LastName} had developed " +
+                        $"{goodHabbitCount} good habbit(s), and {badHabbitCount} bad habbit(s)");
+
+                    if (initialPremium > updatedPremium)
+                    {
+                        Console.WriteLine($"Due to this, {driver.FirstName}'s premium has been lowered by ${(int)initialPremium - updatedPremium}!");
+                    }
+                    if (initialPremium < updatedPremium)
+                    {
+                        Console.WriteLine($"Due to this, {driver.FirstName}'s premium has been rased by ${(int)updatedPremium - initialPremium}.");
+                    }
+                    if (initialPremium == updatedPremium)
+                    {
+                        Console.WriteLine("This does not affect their premium.");
+                    }
+                    Console.ReadKey();
+                    _repo.AddDriverToDir(experiencedDriver);
                 }
+            }
+        }
+        public void DeleteDriver()
+        {
+            List<Driver> driverList = _repo.GetDrivers();
+            int customerCheck = driverList.Count;
+            if (customerCheck > 0)
+            {
+                bool runID = true;
+                while (runID)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please input the ID of the client you would like to remove.");
+                    int input;
+                    bool parse = int.TryParse(Console.ReadLine(), out input);
+                    if (parse)
+                    {
+                        Driver driverToRemove = _repo.GetDriverByID(input);
+                        if (_repo.RemoveDriverFromDir(driverToRemove))
+                        {
+                            Console.WriteLine("client removed.");
+                            Console.ReadKey();
+                            runID = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"None of our clients have an ID of {input}\n" +
+                                $"Press any key to continue");
+                            Console.ReadKey();
+                            runID = false;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("please enter a valid number");
+                        Console.ReadKey();
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("There are no clients to remove!");
+            }
+
+        }
+        public void UpdateDriver()
+        {
+            List<Driver> driverList = _repo.GetDrivers();
+            int customerCheck = driverList.Count;
+            if (customerCheck > 0)
+            {
+                bool runID = true;
+                while (runID)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please input the ID of the client you would like to update.");
+                    int input;
+                    bool parse = int.TryParse(Console.ReadLine(), out input);
+                    if (parse)
+                    {
+
+                        Console.Clear();
+                        Driver driver = new Driver();
+                        Console.WriteLine("What is the first name of the driver?");
+                        driver.FirstName = Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine($"Okay, the driver's first name is: {driver.FirstName}");
+                        Console.ReadKey();
+                        Console.Clear();
+
+                        Console.WriteLine($"What is {driver.FirstName}'s last name?");
+                        driver.LastName = Console.ReadLine();
+                        Console.Clear();
+                        Console.WriteLine($"Okay, {driver.FirstName}'s last name is: {driver.LastName}");
+                        Console.ReadKey();
+                        Console.Clear();
+
+                        bool runPremium = true;
+                        while (runPremium)
+                        {
+                            Console.Clear();
+                            Console.WriteLine($"What is {driver.FirstName} {driver.LastName}'s starting premium?");
+                            double updatInput;
+                            bool check = double.TryParse(Console.ReadLine(), out updatInput);
+                            if (check)
+                            {
+                                driver.Premium = input;
+                                Console.WriteLine($"Okay, {driver.FirstName} {driver.LastName}'s starting premium is: ${driver.Premium}");
+                                Console.ReadKey();
+                                Console.Clear();
+                                runPremium = false;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Please enter a valid number.");
+                                Console.ReadKey();
+                            }
+                        }
+
+
+
+                        Driver driverToUpdate = _repo.GetDriverByID(input);
+                        if (_repo.RemoveDriverFromDir(driverToUpdate))
+                        {
+                            Console.WriteLine("client updated");
+                            Console.ReadKey();
+                            runID = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"None of our clients have an ID of {input}\n" +
+                                $"Press any key to continue");
+                            Console.ReadKey();
+                            runID = false;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("please enter a valid number");
+                        Console.ReadKey();
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("There are no clients to remove!");
             }
         }
         public void ViewDrivers()
