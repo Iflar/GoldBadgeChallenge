@@ -45,7 +45,7 @@ namespace SmartInsurance_Console
                         break;
                     case "3":
                         Console.Clear();
-                        //UpdateDriver
+                        UpdateDriver();
                         break;
                     case "4":
                         Console.Clear();
@@ -135,36 +135,36 @@ namespace SmartInsurance_Console
                         metaID = false;
                         runID = false;
                     }
-                    Console.Clear();
-                    Driver experiencedDriver = _repo.GenerateHabbits(driver);
-                    Console.WriteLine("After 6 months...");
-                    Console.ReadKey();
-                    Console.Clear();
-
-                    double initialPremium = driver.Premium;
-                    int badHabbitCount = experiencedDriver.BadHabbits.Count();
-                    int goodHabbitCount = experiencedDriver.GoodHabbits.Count();
-                    experiencedDriver.Premium =  _repo.CalculatePremiumByHabbit(experiencedDriver);
-                    double updatedPremium = experiencedDriver.Premium;
-
-                    Console.WriteLine($"Over the months it seems {experiencedDriver.FirstName} {experiencedDriver.LastName} had developed " +
-                        $"{goodHabbitCount} good habbit(s), and {badHabbitCount} bad habbit(s)");
-
-                    if (initialPremium > updatedPremium)
-                    {
-                        Console.WriteLine($"Due to this, {driver.FirstName}'s premium has been lowered by ${(int)initialPremium - updatedPremium}!");
-                    }
-                    if (initialPremium < updatedPremium)
-                    {
-                        Console.WriteLine($"Due to this, {driver.FirstName}'s premium has been rased by ${(int)updatedPremium - initialPremium}.");
-                    }
-                    if (initialPremium == updatedPremium)
-                    {
-                        Console.WriteLine("This does not affect their premium.");
-                    }
-                    Console.ReadKey();
-                    _repo.AddDriverToDir(experiencedDriver);
                 }
+                Console.Clear();
+                Driver experiencedDriver = _repo.GenerateHabits(driver);
+                Console.WriteLine("After 6 months...");
+                Console.ReadKey();
+                Console.Clear();
+
+                double initialPremium = driver.Premium;
+                int badHabitCount = experiencedDriver.BadHabits.Count();
+                int goodHabitCount = experiencedDriver.GoodHabits.Count();
+                experiencedDriver.Premium = _repo.CalculatePremiumByHabit(experiencedDriver);
+                double updatedPremium = experiencedDriver.Premium;
+
+                Console.WriteLine($"Over the months it seems {experiencedDriver.FirstName} {experiencedDriver.LastName} had developed " +
+                    $"{goodHabitCount} good habit(s), and {badHabitCount} bad habit(s)");
+
+                if (initialPremium > updatedPremium)
+                {
+                    Console.WriteLine($"Due to this, {driver.FirstName}'s premium has been lowered by ${(int)initialPremium - updatedPremium}!");
+                }
+                if (initialPremium < updatedPremium)
+                {
+                    Console.WriteLine($"Due to this, {driver.FirstName}'s premium has been rased by ${(int)updatedPremium - initialPremium}.");
+                }
+                if (initialPremium == updatedPremium)
+                {
+                    Console.WriteLine("This does not affect their premium.");
+                }
+                Console.ReadKey();
+                _repo.AddDriverToDir(experiencedDriver);
             }
         }
         public void DeleteDriver()
@@ -227,18 +227,18 @@ namespace SmartInsurance_Console
                     {
 
                         Console.Clear();
-                        Driver driver = new Driver();
-                        Console.WriteLine("What is the first name of the driver?");
-                        driver.FirstName = Console.ReadLine();
+                        Driver updatedDriver = new Driver();
+                        Console.WriteLine("What is the new first name of the driver?");
+                        updatedDriver.FirstName = Console.ReadLine();
                         Console.Clear();
-                        Console.WriteLine($"Okay, the driver's first name is: {driver.FirstName}");
+                        Console.WriteLine($"Okay, the driver's first name is: {updatedDriver.FirstName}");
                         Console.ReadKey();
                         Console.Clear();
 
-                        Console.WriteLine($"What is {driver.FirstName}'s last name?");
-                        driver.LastName = Console.ReadLine();
+                        Console.WriteLine($"What is {updatedDriver.FirstName}'s new last name?");
+                        updatedDriver.LastName = Console.ReadLine();
                         Console.Clear();
-                        Console.WriteLine($"Okay, {driver.FirstName}'s last name is: {driver.LastName}");
+                        Console.WriteLine($"Okay, {updatedDriver.FirstName}'s new last name is: {updatedDriver.LastName}");
                         Console.ReadKey();
                         Console.Clear();
 
@@ -246,13 +246,13 @@ namespace SmartInsurance_Console
                         while (runPremium)
                         {
                             Console.Clear();
-                            Console.WriteLine($"What is {driver.FirstName} {driver.LastName}'s starting premium?");
-                            double updatInput;
-                            bool check = double.TryParse(Console.ReadLine(), out updatInput);
+                            Console.WriteLine($"What is {updatedDriver.FirstName} {updatedDriver.LastName}'s updated premium?");
+                            double updateInput;
+                            bool check = double.TryParse(Console.ReadLine(), out updateInput);
                             if (check)
                             {
-                                driver.Premium = input;
-                                Console.WriteLine($"Okay, {driver.FirstName} {driver.LastName}'s starting premium is: ${driver.Premium}");
+                                updatedDriver.Premium = updateInput;
+                                Console.WriteLine($"Okay, {updatedDriver.FirstName} {updatedDriver.LastName}'s new premium is: ${updatedDriver.Premium}");
                                 Console.ReadKey();
                                 Console.Clear();
                                 runPremium = false;
@@ -264,10 +264,7 @@ namespace SmartInsurance_Console
                             }
                         }
 
-
-
-                        Driver driverToUpdate = _repo.GetDriverByID(input);
-                        if (_repo.RemoveDriverFromDir(driverToUpdate))
+                        if (_repo.UpdateDriverInfo(input, updatedDriver))
                         {
                             Console.WriteLine("client updated");
                             Console.ReadKey();
@@ -298,7 +295,7 @@ namespace SmartInsurance_Console
             Console.Clear();
             foreach(Driver driver in _repo.GetDrivers())
             {
-                Console.WriteLine($"\t\t{driver.FirstName} {driver.LastName}\tPremium cost: ${driver.Premium}\n");
+                Console.WriteLine($"\t\t{driver.FirstName} {driver.LastName}\tPremium cost: ${(int)driver.Premium}\n");
             }
             Console.ReadKey();
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmartInsurance_MethodReposotory
 {
-    public enum BadHabbit
+    public enum BadHabit
     {
         FollowTooClose,
         Speed,
@@ -15,7 +15,7 @@ namespace SmartInsurance_MethodReposotory
         None
     }
 
-    public enum GoodHabbit
+    public enum GoodHabit
     {
         SafeDistance,
         FollowSpeedLimit,
@@ -29,13 +29,13 @@ namespace SmartInsurance_MethodReposotory
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public double Premium {get; set;}
-        public List<GoodHabbit> GoodHabbits { get; set; }
-        public List<BadHabbit> BadHabbits { get; set; }
+        public List<GoodHabit> GoodHabits { get; set; }
+        public List<BadHabit> BadHabits { get; set; }
 
         public Driver()
         {
-            GoodHabbits = new List<GoodHabbit>();
-            BadHabbits = new List<BadHabbit>();
+            GoodHabits = new List<GoodHabit>();
+            BadHabits = new List<BadHabit>();
         }
 
         public Driver(int driverID, string firstName, string lastName, double premium)
@@ -45,8 +45,8 @@ namespace SmartInsurance_MethodReposotory
             LastName = lastName;
             Premium = premium;
 
-            GoodHabbits = new List<GoodHabbit>();
-            BadHabbits = new List<BadHabbit>();
+            GoodHabits = new List<GoodHabit>();
+            BadHabits = new List<BadHabit>();
         }
     }
 }

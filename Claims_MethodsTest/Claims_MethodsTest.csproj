@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{70D4AB24-8D78-4F99-9F64-91BBF9DDAEE3}</ProjectGuid>
+    <ProjectGuid>{73A80D19-38E9-46C0-AB71-238EC2FD23A2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmartInsureanceMethodsTest</RootNamespace>
-    <AssemblyName>SmartInsureanceMethodsTest</AssemblyName>
+    <RootNamespace>Claims_MethodsTest</RootNamespace>
+    <AssemblyName>Claims_MethodsTest</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -49,17 +49,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SmartInsuranceTestMethods.cs" />
+    <Compile Include="ClaimTestMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SmartInsureanceMethodReposotory\SmartInsurance_Reposotory.csproj">
-      <Project>{EB60D57E-382F-4741-8C66-D417E0B38E5A}</Project>
-      <Name>SmartInsurance_Reposotory</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

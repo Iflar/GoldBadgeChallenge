@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace SmartInsurance_MethodsTest
 {
     [TestClass]
-    public class SmartInsuranceMthodsTest
+    public class SmartInsuranceTestMethods
     {
         [TestMethod]
         public void Test_AddDriver()
@@ -58,7 +58,7 @@ namespace SmartInsurance_MethodsTest
 
             Driver newDriver = new Driver();
 
-            bool result = _repo.UpdateCustomerInfo(oldDriver.DriverID, newDriver);
+            bool result = _repo.UpdateDriverInfo(oldDriver.DriverID, newDriver);
 
             Assert.IsTrue(result);
         }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace MenuMethodsTest
 {
     [TestClass]
-    public class CafeMethodTest
+    public class CafeTestMethods
     {
         [TestMethod]
         public void Test_AddMenuItem()

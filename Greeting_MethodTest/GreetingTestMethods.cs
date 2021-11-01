@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Greeting_MethodTest
 {
     [TestClass]
-    public class GreetingMethodtest
+    public class GreetingTestMethods
     {
         [TestMethod]
         public void Test_AddCustomer()

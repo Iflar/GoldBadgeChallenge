@@ -22,15 +22,16 @@ namespace SmartInsureanceMethodReposotory
             _driverDirectory.Remove(driver);
             return _driverDirectory.Count < start ? true : false;
         }
-        public bool UpdateCustomerInfo(int driverID, Driver updatedDriver)
+        public bool UpdateDriverInfo(int driverID, Driver updatedDriver)
         {
             Driver oldDriver = GetDriverByID(driverID);
             if (oldDriver != null)
             {
                 oldDriver.FirstName = updatedDriver.FirstName;
                 oldDriver.LastName = updatedDriver.LastName;
-                oldDriver.GoodHabbits = updatedDriver.GoodHabbits;
-                oldDriver.BadHabbits = updatedDriver.BadHabbits;
+                oldDriver.GoodHabits = updatedDriver.GoodHabits;
+                oldDriver.BadHabits = updatedDriver.BadHabits;
+                oldDriver.Premium = updatedDriver.Premium;
                 return true;
             }
             return false;
@@ -50,81 +51,87 @@ namespace SmartInsureanceMethodReposotory
             }
             return null;
         }
-        public Driver GenerateHabbits(Driver driver)
+        public Driver GenerateHabits(Driver driver)
         {
-            List<GoodHabbit> goodHabbits = driver.GoodHabbits;
-            goodHabbits.Add(GoodHabbit.None);
-            List<BadHabbit> badHabbits = driver.BadHabbits;
-            badHabbits.Add(BadHabbit.None);
+            List<GoodHabit> goodHabits = driver.GoodHabits;
+            goodHabits.Add(GoodHabit.None);
+            List<BadHabit> badHabits = driver.BadHabits;
+            badHabits.Add(BadHabit.None);
 
             Random random = new Random();
-            int numGoodHabbits = random.Next(0, 4);
-            int numBadHabbits = random.Next(0, 4);
+            int numGoodHabits = random.Next(0, 4);
+            int numBadHabits = random.Next(0, 4);
 
-            List<GoodHabbit> gHabbitList = new List<GoodHabbit>();
+            List<GoodHabit> gHabitList = new List<GoodHabit>();
             int gCycle = 0;
-            while (numGoodHabbits > 1)
+            while (numGoodHabits > 0)
             {
-                var habbit = Enum.GetValues(typeof(GoodHabbit)).GetValue(gCycle);
-                GoodHabbit selectedHabbit = (GoodHabbit)habbit;
+                var habit = Enum.GetValues(typeof(GoodHabit)).GetValue(gCycle);
+                GoodHabit selectedHabit = (GoodHabit)habit;
 
-                foreach (GoodHabbit goodHabbit in goodHabbits)
+                foreach (GoodHabit goodHabit in goodHabits)
                 {
-                    if (selectedHabbit != goodHabbit)
+                    if (selectedHabit != goodHabit)
                     {
-                        gHabbitList.Add(selectedHabbit);
+                        gHabitList.Add(selectedHabit);
                     }
                 }
 
-                foreach(GoodHabbit goodHabbit in gHabbitList)
+                foreach(GoodHabit goodHabit in gHabitList)
                 {
-                    goodHabbits.Add(goodHabbit);
+                    goodHabits.Add(goodHabit);
                 }
                 ++gCycle;
-                --numGoodHabbits;
+                --numGoodHabits;
             }
 
-            List<BadHabbit> bHabbitList = new List<BadHabbit>();
+            List<BadHabit> bHabitList = new List<BadHabit>();
             int bCycle = 0;
-            while (numBadHabbits > 0)
+            while (numBadHabits > 0)
             {
-                var habbit = Enum.GetValues(typeof(BadHabbit)).GetValue(bCycle);
-                BadHabbit selectedHabbit = (BadHabbit)habbit;
+                var habit = Enum.GetValues(typeof(BadHabit)).GetValue(bCycle);
+                BadHabit selectedHabit = (BadHabit)habit;
 
-                foreach (BadHabbit badHabbit in badHabbits)
+                foreach (BadHabit badHabit in badHabits)
                 {
-                    if (selectedHabbit != badHabbit)
+                    if (selectedHabit != badHabit)
                     {
-                        bHabbitList.Add(selectedHabbit);
+                        bHabitList.Add(selectedHabit);
                     }
                 }
 
-                foreach (BadHabbit badHabbit in bHabbitList)
+                foreach (BadHabit badHabit in bHabitList)
                 {
-                    badHabbits.Add(badHabbit);
+                    badHabits.Add(badHabit);
                 }
                 ++bCycle;
-                --numBadHabbits;
+                --numBadHabits;
             }
-            goodHabbits.Remove(GoodHabbit.None);
-            badHabbits.Remove(BadHabbit.None);
+            goodHabits.Remove(GoodHabit.None);
+            badHabits.Remove(BadHabit.None);
             return driver;
         }
-        public double CalculatePremiumByHabbit(Driver driver)
+        public double CalculatePremiumByHabit(Driver driver)
         {
-            List<GoodHabbit> goodHabbits = driver.GoodHabbits;
-            List<BadHabbit> badHabbits = driver.BadHabbits;
+            List<GoodHabit> goodHabits = driver.GoodHabits;
+            List<BadHabit> badHabits = driver.BadHabits;
             double premium = driver.Premium;
 
-            foreach (GoodHabbit goodHabbit in goodHabbits)
+            foreach (GoodHabit goodHabit in goodHabits)
             {
                 premium = premium - (premium * 0.2);
             }
-            foreach (BadHabbit badHabbit in badHabbits)
+            foreach (BadHabit badHabit in badHabits)
             {
                 premium = premium + (premium * 0.3);
             }
             return premium;
+        }
+        public Driver NewGenerateHabits(Driver driver)
+        {
+            //Actually simulates scenarios to test the driver's skill
+
+            return driver;
         }
     }
 }
