@@ -51,16 +51,17 @@ namespace SmartInsurance_MethodsTest
         public void Test_UpdateDriver()
         {
             DriverMethodRepo _repo = new DriverMethodRepo();
-            Driver oldDriver = new Driver();
+            Driver oldDriver = new Driver(1, "John", "Smith", 500);
             List<Driver> localList = _repo.GetDrivers();
             int count = localList.Count;
             _repo.AddDriverToDir(oldDriver);
 
             Driver newDriver = new Driver();
 
-            bool result = _repo.UpdateDriverInfo(oldDriver.DriverID, newDriver);
+            Driver updatedItem = _repo.UpdateDriverInfo(oldDriver.DriverID, newDriver);
 
-            Assert.IsTrue(result);
+            //I'm comparing the first names because I think updating the driverID would lead to unwanted issues in my program
+            Assert.AreEqual(newDriver.FirstName, updatedItem.FirstName);
         }
         [TestMethod]
         public void Test_ReadDriverList()

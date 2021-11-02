@@ -56,9 +56,10 @@ namespace Cafe_Repository
             bool done = _menuDirectory.Count < start ? true : false;
             return false;
         }
-        public bool UpdateMenuItem(int orderNum, Menu newOrder)
+        public Menu UpdateMenuItem(int orderNum, Menu newOrder)
         {
             Menu oldOrder = GetOrderByNumber(orderNum);
+
             if (oldOrder != null)
             {
                 oldOrder.Name = newOrder.Name;
@@ -67,9 +68,9 @@ namespace Cafe_Repository
                 oldOrder.ListOfIngredients = newOrder.ListOfIngredients;
                 oldOrder.Discription = newOrder.Discription;
                 Console.WriteLine("Order updated");
-                return true;
+                return newOrder;
             }
-            return false;
+            return null;
         }
         public List<Menu> GetAllMenus()
         {

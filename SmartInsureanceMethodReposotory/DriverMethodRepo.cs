@@ -22,7 +22,7 @@ namespace SmartInsureanceMethodReposotory
             _driverDirectory.Remove(driver);
             return _driverDirectory.Count < start ? true : false;
         }
-        public bool UpdateDriverInfo(int driverID, Driver updatedDriver)
+        public Driver UpdateDriverInfo(int driverID, Driver updatedDriver)
         {
             Driver oldDriver = GetDriverByID(driverID);
             if (oldDriver != null)
@@ -32,9 +32,9 @@ namespace SmartInsureanceMethodReposotory
                 oldDriver.GoodHabits = updatedDriver.GoodHabits;
                 oldDriver.BadHabits = updatedDriver.BadHabits;
                 oldDriver.Premium = updatedDriver.Premium;
-                return true;
+                return oldDriver;
             }
-            return false;
+            return null;
         }
         public List<Driver> GetDrivers()
         {
@@ -62,7 +62,7 @@ namespace SmartInsureanceMethodReposotory
             int numGoodHabits = random.Next(0, 4);
             int numBadHabits = random.Next(0, 4);
 
-            List<GoodHabit> gHabitList = new List<GoodHabit>();
+            HashSet<GoodHabit> gHabitList = new HashSet<GoodHabit>();
             int gCycle = 0;
             while (numGoodHabits > 0)
             {
@@ -76,16 +76,16 @@ namespace SmartInsureanceMethodReposotory
                         gHabitList.Add(selectedHabit);
                     }
                 }
-
-                foreach(GoodHabit goodHabit in gHabitList)
-                {
-                    goodHabits.Add(goodHabit);
-                }
                 ++gCycle;
                 --numGoodHabits;
             }
 
-            List<BadHabit> bHabitList = new List<BadHabit>();
+            foreach (GoodHabit goodHabit in gHabitList)
+            {
+                goodHabits.Add(goodHabit);
+            }
+
+            HashSet<BadHabit> bHabitList = new HashSet<BadHabit>();
             int bCycle = 0;
             while (numBadHabits > 0)
             {
@@ -99,16 +99,16 @@ namespace SmartInsureanceMethodReposotory
                         bHabitList.Add(selectedHabit);
                     }
                 }
-
-                foreach (BadHabit badHabit in bHabitList)
-                {
-                    badHabits.Add(badHabit);
-                }
                 ++bCycle;
                 --numBadHabits;
             }
-            goodHabits.Remove(GoodHabit.None);
-            badHabits.Remove(BadHabit.None);
+
+            foreach (BadHabit badHabit in bHabitList)
+            {
+                badHabits.Add(badHabit);
+            }
+            goodHabits.RemoveAll(x => ((int)x) == 4);
+            badHabits.RemoveAll(x => ((int)x) == 4);
             return driver;
         }
         public double CalculatePremiumByHabit(Driver driver)

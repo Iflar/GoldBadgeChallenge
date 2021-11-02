@@ -22,7 +22,7 @@ namespace Greeting_Repository
             _customerDirectory.Remove(customer);
             return _customerDirectory.Count < start ? true : false;
         }
-        public bool UpdateCustomerInfo(int customerID, Customer updatedCustomer)
+        public Customer UpdateCustomerInfo(int customerID, Customer updatedCustomer)
         {
             Customer oldCustomer = GetCustomerByID(customerID);
             if (oldCustomer != null)
@@ -30,9 +30,9 @@ namespace Greeting_Repository
                 oldCustomer.FirstName = updatedCustomer.FirstName;
                 oldCustomer.LastName = updatedCustomer.LastName;
                 oldCustomer.DateActive = updatedCustomer.DateActive;
-                return true;
+                return oldCustomer;
             }
-            return false;
+            return null;
         }
         public List<Customer> GetAllCustomers()
         {

@@ -50,18 +50,15 @@ namespace MenuMethodsTest
         public void Test_UpdateMenuItem()
         {
             MenuMethodRepo _repo = new MenuMethodRepo();
-            Menu oldMenu = new Menu();
-            List<Menu> localList = _repo.GetAllMenus();
-            int count = localList.Count;
+            Menu oldMenu = new Menu(8,"name", "string", 1);
+
             _repo.AddMenuItemToDir(oldMenu);
             _repo.AddItemToOrder(oldMenu.OrderNum);
 
             Menu newMenu = new Menu();
+            Menu updatedItem = _repo.UpdateMenuItem(oldMenu.OrderNum, newMenu);
 
-            bool result = _repo.UpdateMenuItem(oldMenu.OrderNum, newMenu);
-
-            Assert.IsTrue(result);
-
+            Assert.AreEqual(0, updatedItem.OrderNum); 
         }
         [TestMethod]
         public void Test_ReadMenuList()
