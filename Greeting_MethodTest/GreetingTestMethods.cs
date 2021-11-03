@@ -57,7 +57,7 @@ namespace Greeting_MethodTest
 
             Customer updatedItem = _repo.UpdateCustomerInfo(oldCustomer.CustomerID, newCustomer);
 
-            Assert.AreEqual(newCustomer.DateActive, updatedItem.DateActive);
+            Assert.AreEqual(newCustomer.DateActive, oldCustomer.DateActive);
         }
         [TestMethod]
         public void Test_ReadCustomerList()

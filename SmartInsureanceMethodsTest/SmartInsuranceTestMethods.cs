@@ -56,12 +56,12 @@ namespace SmartInsurance_MethodsTest
             int count = localList.Count;
             _repo.AddDriverToDir(oldDriver);
 
-            Driver newDriver = new Driver();
+            Driver newDriver = new Driver(1, "William", "Johnson", 100);
 
-            Driver updatedItem = _repo.UpdateDriverInfo(oldDriver.DriverID, newDriver);
+            Driver updatedItem = _repo.UpdateDriverInfoForTest(oldDriver.DriverID, newDriver);
 
             //I'm comparing the first names because I think updating the driverID would lead to unwanted issues in my program
-            Assert.AreEqual(newDriver.FirstName, updatedItem.FirstName);
+            Assert.AreEqual(newDriver.FirstName, oldDriver.FirstName);
         }
         [TestMethod]
         public void Test_ReadDriverList()

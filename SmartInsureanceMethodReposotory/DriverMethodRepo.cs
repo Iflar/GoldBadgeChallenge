@@ -22,7 +22,8 @@ namespace SmartInsureanceMethodReposotory
             _driverDirectory.Remove(driver);
             return _driverDirectory.Count < start ? true : false;
         }
-        public Driver UpdateDriverInfo(int driverID, Driver updatedDriver)
+        //the only difference between 'UpdateDriverInfoForTest' and 'UpdateDriverInfo' is the return type - this update was made after I implemented it into the programUI.
+        public Driver UpdateDriverInfoForTest(int driverID, Driver updatedDriver)
         {
             Driver oldDriver = GetDriverByID(driverID);
             if (oldDriver != null)
@@ -35,6 +36,20 @@ namespace SmartInsureanceMethodReposotory
                 return oldDriver;
             }
             return null;
+        }
+        public bool UpdateDriverInfo(int driverID, Driver updatedDriver)
+        {
+            Driver oldDriver = GetDriverByID(driverID);
+            if (oldDriver != null)
+            {
+                oldDriver.FirstName = updatedDriver.FirstName;
+                oldDriver.LastName = updatedDriver.LastName;
+                oldDriver.GoodHabits = updatedDriver.GoodHabits;
+                oldDriver.BadHabits = updatedDriver.BadHabits;
+                oldDriver.Premium = updatedDriver.Premium;
+                return true;
+            }
+            return false;
         }
         public List<Driver> GetDrivers()
         {

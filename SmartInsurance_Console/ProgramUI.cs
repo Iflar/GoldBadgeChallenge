@@ -264,7 +264,7 @@ namespace SmartInsurance_Console
                             }
                         }
 
-                        if (_repo.UpdateDriverInfo(input, updatedDriver))
+                        if ((_repo.UpdateDriverInfo(input, updatedDriver)))
                         {
                             Console.WriteLine("client updated");
                             Console.ReadKey();
