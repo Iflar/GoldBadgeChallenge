@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Claims_Repository
 {
-    class ClaimMethodRepo
+    public class ClaimMethodRepo
     {
         List<Claim> _claimDirectory = new List<Claim>();
         public bool AddClaimToDir(Claim claim)
@@ -55,6 +55,11 @@ namespace Claims_Repository
         public List<Claim> GetClaims()
         {
             return _claimDirectory;
+        }
+        public void DisplayDate(DateTime date)
+        {
+            Console.WriteLine($"{date.Day}/{date.Month}/{date.Year}");
+            Console.ReadKey();
         }
     }
 }

@@ -8,5 +8,9 @@ namespace Claims_Console
 {
     class ProgramUI
     {
+        public void Run()
+        {
+
+        }
     }
 }

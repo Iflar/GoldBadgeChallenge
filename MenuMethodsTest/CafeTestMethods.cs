@@ -64,12 +64,17 @@ namespace MenuMethodsTest
         public void Test_ReadMenuList()
         {
             MenuMethodRepo _repo = new MenuMethodRepo();
+            Menu menu = new Menu();
+            _repo.AddMenuItemToDir(menu);
             List<Menu> listTest = _repo.GetAllMenus();
+
             bool result = false;
-            if (listTest != null)
+
+            if (listTest.Count == 1)
             {
                 result = true;
             }
+
             Assert.IsTrue(result);
         }
     }
