@@ -41,7 +41,7 @@ namespace Claims_Repository
 
         public bool SetValidByDate(DateTime dateOfincedent, DateTime dateOfClaim)
         {
-            TimeSpan timeDifference = dateOfClaim - dateOfClaim;
+            TimeSpan timeDifference = dateOfClaim - dateOfincedent;
 
             double differenceInDays = timeDifference.TotalDays;
 

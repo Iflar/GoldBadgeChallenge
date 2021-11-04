@@ -21,6 +21,7 @@ namespace Greeting_Console
             bool shouldRun = true;
             while (shouldRun)
             {
+                Console.SetWindowSize(170, 30);
                 Console.Clear();
                 Console.WriteLine("             Welcome Administrator, what would you like to do today?\n" +
                     "\n" +
@@ -292,10 +293,6 @@ namespace Greeting_Console
 
             foreach (Customer customer in sortedList)
             {
-                MemberStatus type = customer.MemberStatus;
-                int eVal = (int)type;
-                var eName = (MemberStatus)eVal;
-
                 string email = "";
                 if (customer.MemberStatus == MemberStatus.Current)
                 {
@@ -310,8 +307,8 @@ namespace Greeting_Console
                     email = "We currently have the lowest rates on Helicopter Insurance!";
                 }
 
-
-                Console.WriteLine($"{customer.FirstName}\t\t{customer.LastName}\t\t{eName}\t\t{email}");
+                
+                Console.WriteLine($"{customer.FirstName}\t\t{customer.LastName}\t\t{customer.MemberStatus}\t\t{email}");
 
             }
             Console.ReadKey();
