@@ -20,16 +20,10 @@ namespace Claims_Repository
         public double ClaimAmmount { get; set; }
         public DateTime DateOfClaim { get; set; }
         public DateTime DateOfIncident { get; set; }
-        public bool IsValid
-        {
-            get
-            {
-                return SetValidByDate(DateOfIncident, DateOfClaim);
-            }
-        }
+        public bool IsValid { get; set; }
 
         public Claim() { }
-        public Claim(int claimID, TypeClaim claimType, string description, double claimAmmount, DateTime dateOfClaim, DateTime dateOfIncedent)
+        public Claim(int claimID, TypeClaim claimType, string description, double claimAmmount, DateTime dateOfIncedent, DateTime dateOfClaim)
         {
             ClaimID = claimID;
             ClaimType = claimType;
@@ -37,6 +31,7 @@ namespace Claims_Repository
             ClaimAmmount = claimAmmount;
             DateOfClaim = dateOfClaim;
             DateOfIncident = dateOfIncedent;
+            IsValid = SetValidByDate(dateOfIncedent, dateOfClaim);
         }
 
         public bool SetValidByDate(DateTime dateOfincedent, DateTime dateOfClaim)
@@ -54,5 +49,6 @@ namespace Claims_Repository
 
             return false;
         }
+
     }
 }

@@ -1,0 +1,9 @@
+I’m putting this little note in here to let the grader know that this last challenge was not exactly
+
+given maximum effort - I was unable to figure out how to get my DisplayAll method to work the
+
+way I would have liked… Due to this (In conjunction with the fact that this was purely an extra challenge)
+
+I decided to treat this challenge as more of a refresher on a few of the fundamentals…
+
+and as such, am not really concerned with the grade on this one in particular.

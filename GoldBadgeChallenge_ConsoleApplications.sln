@@ -13,13 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greeting_Console", "Greetin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greeting_Repository", "Greeting_Repository\Greeting_Repository.csproj", "{17F9CC8D-2CFB-4B77-AD20-67769DBDCC27}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CafeChallenge", "CafeChallenge", "{365F1766-0023-4E62-AD26-9AA609AF1407}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1_CafeChallenge", "1_CafeChallenge", "{365F1766-0023-4E62-AD26-9AA609AF1407}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GreetingChallenge", "GreetingChallenge", "{23971CFA-973D-41EF-A5B2-7016A5B0BEFC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2_GreetingChallenge", "2_GreetingChallenge", "{23971CFA-973D-41EF-A5B2-7016A5B0BEFC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Greeting_MethodsTest", "Greeting_MethodTest\Greeting_MethodsTest.csproj", "{F7A3B80F-A1DF-4A9E-9365-ACDB05E2D633}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SmartInsuranceChallenge", "SmartInsuranceChallenge", "{E4C91EC0-6BAE-4508-A7EB-74246301521E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3_SmartInsuranceChallenge", "3_SmartInsuranceChallenge", "{E4C91EC0-6BAE-4508-A7EB-74246301521E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartInsurance_Console", "SmartInsurance_Console\SmartInsurance_Console.csproj", "{129A6616-8620-49D4-A705-87EA0738E170}"
 EndProject
@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartInsurance_MethodsTest"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartInsurance_Reposotory", "SmartInsureanceMethodReposotory\SmartInsurance_Reposotory.csproj", "{EB60D57E-382F-4741-8C66-D417E0B38E5A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClaimsChallenge", "ClaimsChallenge", "{AA0F376C-F758-4DD2-8CAF-077EBF14F40F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4_ClaimsChallenge", "4_ClaimsChallenge", "{AA0F376C-F758-4DD2-8CAF-077EBF14F40F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Claims_Console", "Claims_Console\Claims_Console.csproj", "{A40443AB-7F06-4D53-A4D1-A2BA1A8D5894}"
 EndProject
